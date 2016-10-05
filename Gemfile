@@ -24,6 +24,11 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 # use haml instead of erb
 gem 'haml-rails', '>= 0.3.4', :group => :development
+# gem for fonts/page css
+gem 'font-awesome-rails'
+# gem for scss mixin breakpoint
+gem 'breakpoint'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
