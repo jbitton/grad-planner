@@ -13,9 +13,9 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: root
-  password:
-  host: localhost
+  username: cmoren16
+  password: spicy
+  host: cmoren16@lamp.cse.fau.edu
 
 development:
   <<: *default
