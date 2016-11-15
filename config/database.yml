@@ -13,9 +13,9 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: cmoren16
+  username: morenoCami
   password: spicy
-  host: cmoren16@lamp.cse.fau.edu
+  host: camilo-east.ccvkxerqfwcv.us-east-1.rds.amazonaws.com
 
 development:
   <<: *default
