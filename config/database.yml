@@ -12,21 +12,22 @@
 default: &default
   adapter: mysql2
   encoding: utf8
-  pool: 5
-  username: root
-  password:
-  host: localhost
+  database: grad_planner
+  username: morenoCami
+  password: spicyboi
+  host: camilo-east.ccvkxerqfwcv.us-east-1.rds.amazonaws.com
+  port: 3306
 
 development:
   <<: *default
-  database: SWEProj_development
+  database: grad_planner
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: SWEProj_test
+  database: grad_planner
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -47,8 +48,9 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: SWEProj_production
-  username: testing
-  password: <%= ENV['TESTING_DATABASE_PASSWORD'] %>
+
+#production:
+#  <<: *default
+#  database: swe_project
+#  username: morenoCami
+#  password: <%= ENV['TESTING_DATABASE_PASSWORD'] %>
