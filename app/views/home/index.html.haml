@@ -25,6 +25,10 @@
           %ul
             %li
               %a{:href => "#intro"} Welcome
+            %li
+              %a{:href => "#one"} Login
+
+
     / Wrapper
     #wrapper
       / Intro
@@ -40,16 +44,16 @@
         %section
           .content
             .inner
-              %h2 Please enter your FAUNetID and Password
-              %form
+              %h2 Please enter your Username and Password
+              %form{:action => home_index_path}
                 .container
                   %label
-                    %strong FAUNetID
-                  %input{:name => "uname", :placeholder => "Enter Username", :required => "", :type => "text"}/
+                    %strong Username
+                  %input{:id => "uname", :name => "uname", :placeholder => "Enter Username", :required => "", :type => "text"}/
                   %br/
                   %label
                     %strong Password
-                  %input{:name => "psw", :placeholder => "Enter Password", :required => "", :type => "password"}/
+                  %input{:id => "pwd", :name => "psw", :placeholder => "Enter Password", :required => "", :type => "password"}/
                   %br/
                   %button{:type => "submit"} Login
         .copyright

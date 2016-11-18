@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 0) do
   add_index "USER", ["major_2"], name: "major_2", using: :btree
   add_index "USER", ["username"], name: "username_UNIQUE", unique: true, using: :btree
 
-  add_foreign_key "DRAFTS", "USER", column: "username", primary_key: "username", name: "username"
   add_foreign_key "USER", "MAJOR", column: "major_1", name: "major_1"
   add_foreign_key "USER", "MAJOR", column: "major_2", name: "major_2"
 end
