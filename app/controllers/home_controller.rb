@@ -3,7 +3,7 @@ class HomeController < ApplicationController
     @username = params["uname"]
     @password = params["pwd"]
 
-    u = User.where(:username => @username).first!
+    u = User.where(:username => @username).first
 
     if u == nil
       # error: invalid username
