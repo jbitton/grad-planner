@@ -6,13 +6,13 @@ class HomeController < ApplicationController
     u = User.where(:username => @username).first
 
     if u == nil
-      # error: invalid username
-    end
-
-    if u.password == @password
-      # login verified!
+      puts "Error"
     else
-      # invalid password
+      if u.password == @password
+        puts "Login"
+      else
+        puts "Bad credentials"
+      end
     end
   end
 end
