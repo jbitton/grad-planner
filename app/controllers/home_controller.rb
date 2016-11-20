@@ -1,18 +1,16 @@
 class HomeController < ApplicationController
   helper_method :do_stuff
 
+  # this method should be moved to the generation_controller.rb once it is created
   def find_remaining_courses_for_graduation
-    user = User.find(10)
+    user = User.where(:username => @username).first
     major = Major.find(user.major_1)
-    coursesTaken = user.course_taken.split(",")
+    courses_taken = user.course_taken.split(",")
     requirements = major.requirements.split(",")
 
-    remaining=requirements-coursesTaken
-
-    puts "\nCourses taken ARE:\n"+coursesTaken.to_s+"\n"
-    puts "\nMajor "+user.major_1.to_s+" requirements ARE:\n"+requirements.to_s+"\n\n"
-    puts "\nRemaining courses ARE:\n"+remaining.to_s+"\n\n"
+    remaining_courses=requirements-courses_taken
   end
+
 
   def index
     @username = params["uname"]
