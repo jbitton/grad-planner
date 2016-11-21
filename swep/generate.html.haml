@@ -1,0 +1,106 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Generate A Schedule
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %link{:href => "assets/css/main.css", :rel => "stylesheet"}/
+  %body
+    / Sidebar
+    %section#sidebar
+      .inner
+        %nav
+          %ul
+            %li
+              %a{:href => "index.html"} Home
+            %li
+              %a{:href => "dashboard.html"} Dashboard
+            %li
+              %a.active{:href => "generate.html"} Generate
+            %li
+              %a{:href => "profile.html"} Settings
+            %li
+              %a{:href => "drafts.html"} Drafts
+    / Wrapper
+    #wrapper
+      / Main
+      %section#main.wrapper
+        .inner
+          %br/
+          %br/
+          %h1.major Generate a Schedule Here!
+          / Text
+          %section
+            %p Your major is:
+            / FILL IN FROM DATABASE
+            %p
+              How many credits do you have so far? (
+              %strong including current semester
+              )
+            .6u{:class => "12u$(xsmall)"}
+              %input#demo-name{:name => "demo-name", :placeholder => "Enter your credits achieved", :type => "text", :value => ""}/
+            %br/
+            %p What's the maximum amount of credits you'd like to take next semester?
+            .6u{:class => "12u$(xsmall)"}
+              %input#demo-name{:name => "demo-name", :placeholder => "Enter your credits wanted", :type => "text", :value => ""}/
+            %br/
+            %p Would you like more core or elective courses?
+            .4u{:class => "12u$(small)"}
+              %input#demo-priority-low{:checked => "checked", :name => "classtype", :type => "radio", :value => "core"}/
+              %label{:for => "demo-priority-low"} Core Classes
+            .4u{:class => "12u$(small)"}
+              %input#demo-priority-normal{:name => "classtype", :type => "radio", :value => "elective"}/
+              %label{:for => "demo-priority-normal"} Elective Classes
+            %br/
+            %br/
+            %a.button.fit{:href => "#"} GENERATE!
+            %hr/
+          / Lists of Generated Schedules
+          %section
+            %h1 Your Generated Schedule
+            .row
+              .6u{:class => "12u$(medium)"}
+                %h2 Courses
+                %ul
+                  %li COURSE 1
+                  %li COURSE 2
+                  %li COURSE 3
+                  %li COURSE 4
+              %div{:class => "6u$ 12u$(medium)"}
+                %h2 Alternative Courses
+                %ol
+                  %li ALTERNATIVE 1
+                  %li ALTERNATIVE 2
+                  %li ALTERNATIVE 3
+                  %li ALTERNATIVE 4
+                  %li ALTERNATIVE 5
+                  %li ALTERNATIVE 6
+                  %li ALTERNATIVE 7
+                  %li ALTERNATIVE 8
+                  %li ALTERNATIVE 9
+                  %li ALTERNATIVE 10
+            %h2 OPTIONS:
+            .row
+              .6u{:class => "12u$(medium)"}
+                %ul.actions
+                  %li
+                    %a.button.special{:href => "#"} SAVE
+                  %li
+                    %a.button{:href => "#"} GENERATE ANOTHER
+    / Footer
+    %footer#footer.wrapper.alt
+      .inner
+        %ul.menu
+          %li © Untitled. All rights reserved.
+          %li
+            Design:
+            %a{:href => "http://html5up.net"} HTML5 UP
+    / Scripts
+    %script{:src => "assets/js/jquery.min.js"}
+    %script{:src => "assets/js/jquery.scrollex.min.js"}
+    %script{:src => "assets/js/jquery.scrolly.min.js"}
+    %script{:src => "assets/js/skel.min.js"}
+    %script{:src => "assets/js/util.js"}
+    /[if lte IE 8] <script src="assets/js/ie/respond.min.js"></script>
+    %script{:src => "assets/js/main.js"}

@@ -1,0 +1,179 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+  <body>
+    
+    <head>
+    <title>Graduation Planner</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/dropdown.css" />
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    <script>
+      (function(d) {
+        var config = {
+          kitId: 'gkf0ehc',
+          scriptTimeout: 3000,
+          async: true
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+      })(document);
+    </script>
+    </head>
+    
+
+		<!-- Sidebar -->
+			<section id="sidebar">
+				<div class="inner">
+					<nav>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+						    <li><a href="generic.html" class="active">Dashboard</a></li>
+						    <li><a href="elements.html">Generate</a></li>
+                            <li><a href="drafts.html">Drafts</a></li>
+						</ul>
+					</nav>
+				</div>
+      </section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Intro -->
+					<section id="intro" class="wrapper style1 fullscreen fade-up">
+						<div class="inner">
+							<h1>Welcome to Your Graduation Planner</h1>
+                            <br><br><br><br><br>
+							<p>Fill out the following information to complete your profile. 
+							We use the math courses as a differentiator because the math courses a student takes determines the courses a student has to take to get into courses like calculus.
+							<br> <b>* Note: making this schedule assumes you have completed all IFP courses.</b>
+							</p>
+							<ul class="actions">
+								<li><a href="#one" class="button scrolly">Click here</a></li>
+							</ul>
+						</div>
+					</section>
+
+				<!-- One -->
+					<section id="one" class="wrapper style1 fullscreen spotlights">
+						
+  							<div class="content">
+								  <div class="inner">
+									  <form action="">
+                                          <div class="container">
+                                            <label><b>Unique Username: </b></label>
+                                            <p>You will use this to log in...</p>
+                                            <input type="text" placeholder="Enter your username" name="uname" required>
+                                              
+                                            <br>
+                                              
+                                            <label><b>Password: </b></label>
+                                            <input type="text" placeholder="Enter your password" name="psw" required>
+                                              
+                                            <br>
+                                              
+                                            <label><b>First Name: </b></label>
+                                            <input type="text" placeholder="Enter your first name" name="fname" required>
+                                        
+                                            <br>  
+                                              
+                                            <label><b>Last Name: </b></label>
+                                            <input type="password" placeholder="Enter your last name" name="lname" required>
+                                                
+                                            <br>
+                                              
+                                            <label><b>What is your major?</b></label>
+                                            <input type="radio" name="major" value="cs"> Computer Science<br>
+                                            <input type="radio" name="major" value="ce"> Computer Engineering<br>
+                                            <input type="radio" name="major" value="ee"> Electrical Engineering<br>
+                                              
+                                            <br>
+                                              
+                                            <label><b>Do you have a second major?</b></label>
+                                            <input type="radio" name="major" value="cs"> Computer Science<br>
+                                            <input type="radio" name="major" value="ce"> Computer Engineering<br>
+                                            <input type="radio" name="major" value="ee"> Electrical Engineering<br>
+                                            <input type="radio" name="major" value="na"> Does not apply<br>
+                                            <br>
+                                              
+                                            <label><b>What math did you start out with?</b></label>
+                                            <input type="radio" name="math" value="mac1105">MAC1105: College Algebra<br>
+                                            <input type="radio" name="math" value="mac1140">MAC1140: Precalculus Trigonometry<br>
+                                            <input type="radio" name="math" value="mac2311">MAC2311: Calculus with Analytic Geometry 1<br>
+                                             
+                                            
+                                          
+                                            <!-- DropDown Templete -->
+                                            <body>
+
+                                            <h2>Search/Filter Dropdown</h2>
+                                            <p>Click on the button to open the dropdown menu, and use the input field to search for a specific dropdown link.</p>
+
+                                            <div class="dropdown">
+                                            <button2 onclick="myFunction()" class="dropbtn">Dropdown</button2>
+                                              <div id="myDropdown" class="dropdown-content">
+                                                <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                                                <a href="#about">About</a>
+                                                <a href="#base">Base</a>
+                                                <a href="#blog">Blog</a>
+                                                <a href="#contact">Contact</a>
+                                                <a href="#custom">Custom</a>
+                                                <a href="#support">Support</a>
+                                                <a href="#tools">Tools</a>
+                                              </div>
+                                            </div>
+                                            <script>
+                                            /* When the user clicks on the button,
+                                            toggle between hiding and showing the dropdown content */
+                                            function myFunction() {
+                                                document.getElementById("myDropdown").classList.toggle("show");
+                                            }
+
+                                            function filterFunction() {
+                                                var input, filter, ul, li, a, i;
+                                                input = document.getElementById("myInput");
+                                                filter = input.value.toUpperCase();
+                                                div = document.getElementById("myDropdown");
+                                                a = div.getElementsByTagName("a");
+                                                for (i = 0; i < a.length; i++) {
+                                                    if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                                                        a[i].style.display = "";
+                                                    } else {
+                                                        a[i].style.display = "none";
+                                                    }
+                                                }
+                                            }
+                                            </script>
+                                            </body>
+                                              
+                                            
+                                            <br><br>
+                                            <button type="submit">Submit my info!</button>
+                                          </div>
+                                        
+                    </form>
+								  </div>
+							  </div>
+      
+			    </section>
+      </div>
+
+      
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+			
+    </body>
+</html>
