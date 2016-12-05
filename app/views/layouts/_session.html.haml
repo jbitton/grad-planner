@@ -1,0 +1,66 @@
+!!!
+/
+  Hyperspace by HTML5 UP
+  html5up.net | @ajlkn
+  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+%html
+  %head
+    %title When do I Graduate?
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    /[if lte IE 8] <script src="assets/js/ie/html5shiv.js"></script>
+  %link{:href => "assets/css/main.css", :rel => "stylesheet"}/
+    /[if lte IE 9] <link rel="stylesheet" href="assets/css/ie9.css" />
+  /[if lte IE 8] <link rel="stylesheet" href="assets/css/ie8.css" />
+  %script{:src => "https://cdn.plot.ly/plotly-latest.min.js"}
+    :javascript
+      (function(d) {
+        var config = {
+          kitId: 'gkf0ehc',
+          scriptTimeout: 3000,
+          async: true
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+      })(document);
+  %body
+    / Sidebar
+    %section#sidebar
+      .inner
+        %nav
+          %ul
+            %li
+              %a{:href => "index.html"} Home
+            %li
+              %a.active{:href => "generic.html"} Dashboard
+            %li
+              %a{:href => "generate.html"} Generate
+            %li
+              %a{:href => "profile.html"} Settings
+            %li
+              %a{:href => "drafts.html"} Drafts
+    / Wrapper
+    #wrapper
+      / Main
+      %section#main.wrapper
+        .inner
+          = yield
+    / Footer
+    %footer#footer.wrapper.alt
+      .inner
+        %ul.menu
+          %li © 1023MB. All rights reserved.
+          %li
+            Design:
+            %a{:href => "http://html5up.net"} HTML5 UP
+    / Scripts
+    %script{:src => "assets/js/jquery.min.js"}
+    %script{:src => "assets/js/jquery.scrollex.min.js"}
+    %script{:src => "assets/js/jquery.scrolly.min.js"}
+    %script{:src => "assets/js/skel.min.js"}
+    %script{:src => "assets/js/util.js"}
+    /[if lte IE 8] <script src="assets/js/ie/respond.min.js"></script>
+  %script{:src => "assets/js/main.js"}
