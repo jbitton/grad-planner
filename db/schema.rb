@@ -13,7 +13,8 @@
 
 ActiveRecord::Schema.define(version: 0) do
 
-  create_table "COURSE", primary_key: "course_code", force: :cascade do |t|
+  create_table "courses", force: :cascade do |t|
+    t.string "course_code",   limit: 25,   null: false
     t.string "credits",       limit: 3,    null: false
     t.string "prerequisites", limit: 45
     t.string "corequisites",  limit: 45
@@ -21,21 +22,23 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "description",   limit: 1000, null: false
   end
 
-  create_table "DRAFTS", force: :cascade do |t|
+  add_index "courses", ["course_code"], name: "course_code_UNIQUE", unique: true, using: :btree
+
+  create_table "drafts", force: :cascade do |t|
     t.string "username", limit: 100, null: false
     t.string "schedule", limit: 100, null: false
   end
 
-  add_index "DRAFTS", ["username"], name: "username_idx", using: :btree
+  add_index "drafts", ["username"], name: "username_idx", using: :btree
 
-  create_table "MAJOR", force: :cascade do |t|
+  create_table "majors", force: :cascade do |t|
     t.string "name",         limit: 45,  null: false
     t.string "abbr",         limit: 5,   null: false
     t.string "credits",      limit: 3,   null: false
     t.string "requirements", limit: 500
   end
 
-  create_table "USER", primary_key: "user_id", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string  "username",     limit: 45,  null: false
     t.string  "password",     limit: 45,  null: false
     t.string  "first_name",   limit: 45,  null: false
@@ -45,11 +48,10 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "major_2",      limit: 4
   end
 
-  add_index "USER", ["major_1", "major_2"], name: "major_1_idx", using: :btree
-  add_index "USER", ["major_2"], name: "major_2", using: :btree
-  add_index "USER", ["username"], name: "username_UNIQUE", unique: true, using: :btree
+  add_index "users", ["major_1", "major_2"], name: "major_1_idx", using: :btree
+  add_index "users", ["major_2"], name: "major_2", using: :btree
+  add_index "users", ["username"], name: "username_UNIQUE", unique: true, using: :btree
 
-  add_foreign_key "DRAFTS", "USER", column: "username", primary_key: "username", name: "username"
-  add_foreign_key "USER", "MAJOR", column: "major_1", name: "major_1"
-  add_foreign_key "USER", "MAJOR", column: "major_2", name: "major_2"
+  add_foreign_key "users", "majors", column: "major_1", name: "major_1"
+  add_foreign_key "users", "majors", column: "major_2", name: "major_2"
 end

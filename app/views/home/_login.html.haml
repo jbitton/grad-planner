@@ -1,0 +1,13 @@
+%h2 Please enter your Username and Password
+= form_for(:home, url: '') do |f|
+  = f.label :username
+  = f.text_field :username, class: 'form-control'
+  %br
+  = f.label :password
+  = f.password_field :password, class: 'form-control'
+  - if invalid
+    %p{:style => 'color: red;'} Invalid Username/Password Combination
+  - else
+    %br
+  = f.submit "Log in"
+%a{ :href => '/home/signup' } Sign up Now!
