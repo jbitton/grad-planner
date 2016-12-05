@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
     <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/dropdown.css" />
     <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
     <script>
@@ -34,8 +35,9 @@
 					<nav>
 						<ul>
 							<li><a href="index.html">Home</a></li>
-						    <li><a href="generic.html" class="active">Dashboard</a></li>
-						    <li><a href="elements.html">Generate</a></li>
+						    <li><a href="generic.html">Dashboard</a></li>
+						    <li><a href="generate.html">Generate</a></li>
+                            <li><a href="profile.html" class="active">Settings</a></li>
                             <li><a href="drafts.html">Drafts</a></li>
 						</ul>
 					</nav>
@@ -50,7 +52,7 @@
 						<div class="inner">
 							<h1>Welcome to the CEECS Graduation Planner</h1>
                             <br><br><br><br><br>
-							<p>Fill out the following information to complete your profile. <b>Note: making this schedule assumes you have completed all IFP courses.</b> We use the math courses as a differentiator because the math courses a student takes determines the courses a student has to take to get into courses like calculus.</p>
+							<p>Fill out the following information to complete your profile. <b>Note: making this schedule assumes you have completed all IFP courses.</b> We use the math courses as a differentiator because the math courses a student takes determines the courses a student has to take to get into courses like calculus. <strong>ALL ITEMS REQUIRED!</strong></p>
 							<ul class="actions">
 								<li><a href="#one" class="button scrolly">Click here</a></li>
 							</ul>
@@ -65,8 +67,7 @@
 									<form action="">
                                           <div class="container">
                                             <label><b>Unique Username: </b></label>
-                                            <p>You will use this to log in...</p>
-                                            <input type="text" placeholder="Enter your username" name="uname" required>
+                                            <input type="text" placeholder="You will use this to log in..." name="uname" required>
                                               
                                             <br>
                                               
@@ -74,6 +75,11 @@
                                             <input type="text" placeholder="Enter your password" name="psw" required>
                                               
                                             <br>
+                                              
+                                            <label><b>Confirm your Password: </b></label>
+                                            <input type="text" placeholder="Enter your password again" name="psw" required>
+                                              
+                                            <br>  
                                               
                                             <label><b>First Name: </b></label>
                                             <input type="text" placeholder="Enter your first name" name="fname" required>
@@ -86,30 +92,68 @@
                                             <br>
                                               
                                             <label><b>What is your major?</b></label>
-                                            <input type="radio" name="major" value="cs"> Computer Science<br>
-                                            <input type="radio" name="major" value="ce"> Computer Engineering<br>
-                                            <input type="radio" name="major" value="ee"> Electrical Engineering<br>
+                                            <div class="4u 12u$(small)">
+                                                <input type="radio" id="demo-priority-low" name="major" value="cs">
+                                                <label for="demo-priority-low">Computer Science</label>
+                                            </div>
+
+                                            <div class="4u 12u$(small)">
+                                                <input type="radio" id="demo-priority-normal" name="major" value="ce">
+	                                            <label for="demo-priority-normal">Computer Engineering</label>
+                                            </div>
+
+                                            <div class="4u$ 12u$(small)">
+                                                <input type="radio" id="demo-priority-high" name="major" value="ee">
+                                                <label for="demo-priority-high">Electrical Engineering</label>
+                                            </div>
                                               
                                             <br>
                                               
-                                            <label><b>Do you have a second major?</b></label>
-                                            <input type="radio" name="major" value="cs"> Computer Science<br>
-                                            <input type="radio" name="major" value="ce"> Computer Engineering<br>
-                                            <input type="radio" name="major" value="ee"> Electrical Engineering<br>
-                                            <input type="radio" name="major" value="na"> Does not apply<br>
+                                            <label><b>Do you have a second major in our college?</b></label>
+                                            <div class="4u 12u$(small)">
+                                                <input type="radio" id="demo-priority-low" name="secondmajor" value="cs">
+                                                <label for="demo-priority-low">Computer Science</label>
+                                            </div>
+
+                                            <div class="4u 12u$(small)">
+                                                <input type="radio" id="demo-priority-normal" name="secondmajor" value="ce">
+	                                            <label for="demo-priority-normal">Computer Engineering</label>
+                                            </div>
+
+                                            <div class="4u$ 12u$(small)">
+                                                <input type="radio" id="demo-priority-high" name="secondmajor" value="ee">
+                                                <label for="demo-priority-high">Electrical Engineering</label>
+                                            </div>
+                                            <div class="4u$ 12u$(small)">
+                                                <input type="radio" id="demo-priority-high" name="secondmajor" value="na">
+                                                <label for="demo-priority-high">Does Not Apply</label>
+                                            </div>
+                                              
                                             <br>
                                               
                                             <label><b>What math did you start out with?</b></label>
-                                            <input type="radio" name="math" value="mac1105">MAC1105: College Algebra<br>
-                                            <input type="radio" name="math" value="mac1140">MAC1140: Precalculus Trigonometry<br>
-                                            <input type="radio" name="math" value="mac2311">MAC2311: Calculus with Analytic Geometry 1<br><br>
+                                              <div class="4u 12u$(small)">
+                                                <input type="radio" id="demo-priority-low" name="math" value="mac1105" >
+                                                <label for="demo-priority-low">MAC1105: College Algebra</label>
+                                            </div>
+
+                                            <div class="4u 12u$(small)">
+                                                <input type="radio" id="demo-priority-normal" name="math" value="mac1140">
+	                                            <label for="demo-priority-normal">MAC1140: Precalculus Algebra</label>
+                                            </div>
+
+                                            <div class="4u$ 12u$(small)">
+                                                <input type="radio" id="demo-priority-high" name="math" value="mac2311">
+                                                <label for="demo-priority-high">MAC2311: Calculus with Analytic Geometry 1</label>
+                                            </div>
                                               
                                             <p>Please enter all the courses you have received credit for, <b>including the semester you are currently enrolled for.</b> Do not leave out any courses, as any lapses in your schedule will drastically affect the accuracy of your schedule generation!</p>  
-                                              
+                                            
+                                            
                                             <div class="dropdown">
-                                                <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+                                                <button2 onclick="myFunction()" class="dropbtn">Select Your Courses</button2>
                                                     <div id="myDropdown" class="dropdown-content">
-                                                        <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                                                        <input type="text" placeholder="Search..." id="myInput" onkeyup="filterFunction()">
                                                             <a href="#about">About</a>
                                                             <a href="#base">Base</a>
                                                             <a href="#blog">Blog</a>
@@ -119,9 +163,38 @@
                                                             <a href="#tools">Tools</a>
                                                     </div>
                                             </div>
+                                              
+                                            <script>
+                                                    /* When the user clicks on the button,
+                                                    toggle between hiding and showing the dropdown content */
+                                                    function myFunction() {
+                                                        document.getElementById("myDropdown").classList.toggle("show");
+                                                    }
+
+                                                    function filterFunction() {
+                                                        var input, filter, ul, li, a, i;
+                                                        input = document.getElementById("myInput");
+                                                        filter = input.value.toUpperCase();
+                                                        div = document.getElementById("myDropdown");
+                                                        a = div.getElementsByTagName("a");
+                                                        for (i = 0; i < a.length; i++) {
+                                                            if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                                                                a[i].style.display = "";
+                                                            } else {
+                                                                a[i].style.display = "none";
+                                                            }
+                                                        }
+                                                    }
+                                              </script>
+
+                                              
                                             
+												
+											
                                             <br><br>
                                             <button type="submit">Submit my info!</button>
+                                            <input type="checkbox" id="demo-human" name="demo-human" checked>
+								            <label for="demo-human">Not a robot</label>  
                                           </div>
                                         
                                     </form>

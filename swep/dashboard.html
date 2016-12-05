@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="assets/css/main.css" />
     <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script>
       (function(d) {
         var config = {
@@ -23,7 +24,7 @@
         h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
       })(document);
     </script>
-</head>
+    </head>
 	<body>
 
 		<!-- Sidebar -->
@@ -33,7 +34,8 @@
 						<ul>
 							<li><a href="index.html">Home</a></li>
 						    <li><a href="generic.html" class="active">Dashboard</a></li>
-						    <li><a href="elements.html">Generate</a></li>
+						    <li><a href="generate.html">Generate</a></li>
+                            <li><a href="profile.html">Settings</a></li>
                             <li><a href="drafts.html">Drafts</a></li>
 						</ul>
 					</nav>
@@ -49,7 +51,43 @@
                             <br><br><br>
 							<h1 id="home-lp-title">Welcome to your dashboard!</h1>
                             <section>
-                                <center><img src="assets/css/images/FAU.JPG" align="middle"></center>
+                                <body>
+                                    <center><div id="myDiv" style="width: 600px; height: 300px;"></div></center>
+                                    <script>
+                                       var trace1 = {
+                                           x: [20], //READ IN VALUE FROM DB HERE-------------------------------------------
+                                           y: ['Your Progress'],
+                                           name: 'Completed',
+                                           orientation: 'h',
+                                           marker: {
+                                               color: 'rgba(0, 0, 255, 0.3)',
+                                               width: 1
+                                           },
+                                           type: 'bar'
+                                        };
+
+                                      var trace2 = {
+                                          x: [29], //TOTAL NEEDED TO GRADUATE - VAL READ FROM DB---------------------------
+                                          y: ['Your Progress'],
+                                          name: 'Left to Graduation',
+                                          orientation: 'h',
+                                          type: 'bar',
+                                          marker: {
+                                              color: 'rgba(255, 0, 0, 0.3)',
+                                              width: 1
+                                            }
+                                      };
+
+                                        var data = [trace1, trace2];
+
+                                      var layout = {
+                                          title: 'Your Credits',
+                                          barmode: 'stack'
+                                      };
+
+                                      Plotly.newPlot('myDiv', data, layout);
+                                    </script>   
+                                </body>
                                 <br>
 							<!-- Graph to monitor student's progress goes here -->
 							         <p>This is your schedule planner. In the taskbar, you have the option of letting the application generate a schedule for you, or to view your drafts you have saved. You have a maximum of 5 drafts allowed to be saved in your profile. Team 1023MB hopes you enjoy the experience!</p>
@@ -64,7 +102,7 @@
 			<footer id="footer" class="wrapper alt">
 				<div class="inner">
 					<ul class="menu">
-						<li>&copy; Dicks out for Harambe. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						<li>&copy; 1023MB. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 					</ul>
 				</div>
 			</footer>

@@ -1623,11 +1623,6 @@
 
 	body {
 		background: #001529;
-		background-attachment: inherit;
-		background-image: url('images/ocean.jpg');
-		background-position: bottom left;
-		background-repeat: no-repeat;
-		background-size: cover;
 	}
 
 		body.is-loading *, body.is-loading *:before, body.is-loading *:after {
@@ -1650,23 +1645,7 @@
 		font-weight: normal;
 		line-height: 1.75;
 	}
-	
-		@media screen and (max-width: 3840px) {
 
-			body, input, select, textarea {
-				font-size: 13pt;
-			}
-
-		}	
-		
-		@media screen and (max-width: 1920px) {
-
-			body, input, select, textarea {
-				font-size: 13pt;
-			}
-
-		}
-		
 		@media screen and (max-width: 1680px) {
 
 			body, input, select, textarea {
@@ -3119,14 +3098,6 @@
 			transform: translateX(-1em);
 			opacity: 0;
 		}
-		
-		/* (1920x1080) Full HD Display */
-		@media  screen and (max-width: 1920px) {
-				.spotlights > section > .content {
-				padding: 4em 4em 2em 4em ;
-			}
-    /* insert styles here */
-		}
 
 		@media screen and (max-width: 1680px) {
 
@@ -3252,25 +3223,6 @@
 			max-width: 100%;
 			width: 75em;
 		}
-
-		@media screen and (max-width: 3840px) {
-
-				.wrapper > .inner {
-					padding: 0em 0em 2em 22em ;
-				}
-                .wrapper > * { padding-left: 22em; }
-
-		}	
-		
-
-			@media screen and (max-width: 1920px) {
-
-				.wrapper > .inner {
-					padding: 0em 0em 2em 22em ;
-				}
-                .wrapper > * { padding-left: 22em; }
-
-			}
 
 			@media screen and (max-width: 1680px) {
 
