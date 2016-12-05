@@ -1,0 +1,55 @@
+%br/
+  %br/
+  %h1.major Generate a Schedule Here!
+  %section
+    %form{:action => ""}
+      %p Your major is:
+              / FILL IN FROM DATABASE
+      %p
+        How many credits do you have so far? (
+        %strong including current semester
+        )
+      %input#cr_earned_input{:name => "credits_earned", :placeholder => "Enter your credits earned", :type => "text", :value => ""}/
+      %br/
+      %p What's the maximum amount of credits you'd like to take next semester?
+      %input#cr_amount_input{:name => "credits_amount", :placeholder => "Enter your credits amount", :type => "text", :value => ""}/
+      %br/
+      %br/
+      %br/
+      %input#generate{:disabled => "disabled", :type => "submit", :value => "Generate"}/
+              /
+                <a href="#" class="button fit">GENERATE!</a>
+                <hr />
+  #gen_schedule
+    %section
+      %h1 Your Generated Schedule
+      .row
+        .6u{:class => "12u$(medium)"}
+          %h2 Courses
+          %ul
+            %li COURSE 1
+            %li COURSE 2
+            %li COURSE 3
+            %li COURSE 4
+        %div{:class => "6u$ 12u$(medium)"}
+          %h2 Alternative Courses
+          %ul
+            %li ALTERNATIVE 1
+            %li ALTERNATIVE 2
+            %li ALTERNATIVE 3
+            %li ALTERNATIVE 4
+            %li ALTERNATIVE 5
+            %li ALTERNATIVE 6
+            %li ALTERNATIVE 7
+            %li ALTERNATIVE 8
+            %li ALTERNATIVE 9
+            %li ALTERNATIVE 10
+      %h2 OPTIONS:
+      .row
+        %ul.actions
+          %li
+            %a.button.special{:href => "#"} SAVE
+          %li
+            %a.button.special{:download => "", :href => "#"} DOWNLOAD
+          %li
+            %a.button{:href => "#"} GENERATE ANOTHER
