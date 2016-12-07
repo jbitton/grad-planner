@@ -14,10 +14,10 @@
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     /[if lte IE 8] <script src="assets/js/ie/html5shiv.js"></script>
   %link{:href => "assets/css/main.css", :rel => "stylesheet"}/
-    /[if lte IE 9] <link rel="stylesheet" href="assets/css/ie9.css" />
-  /[if lte IE 8] <link rel="stylesheet" href="assets/css/ie8.css" />
-  %script{:src => "https://cdn.plot.ly/plotly-latest.min.js"}
-    :javascript
+  /[if lte IE 9] <link rel="stylesheet" href="assets/css/ie9.css" />
+/[if lte IE 8] <link rel="stylesheet" href="assets/css/ie8.css" />
+%script{:src => "https://cdn.plot.ly/plotly-latest.min.js"}
+  :javascript
       (function(d) {
         var config = {
           kitId: 'gkf0ehc',
@@ -33,15 +33,20 @@
         %nav
           %ul
             %li
-              %a{:href => "index.html"} Home
+              - if active == 'dashboard'
+                %a.active{:href => "#"} Dashboard
+              - else
+                %a{:href => "/session/dashboard"} Dashboard
             %li
-              %a.active{:href => "generic.html"} Dashboard
+              - if active == 'generate'
+                %a.active{:href => "#"} Generate
+              - else
+                %a{:href => "/session/generate"} Generate
             %li
-              %a{:href => "generate.html"} Generate
-            %li
-              %a{:href => "profile.html"} Settings
-            %li
-              %a{:href => "drafts.html"} Drafts
+              - if active == 'settings'
+                %a.active{:href => "#"} Settings
+              - else
+                %a{:href => "/session/settings"} Settings
     / Wrapper
     #wrapper
       / Main
@@ -62,5 +67,4 @@
     %script{:src => "assets/js/jquery.scrolly.min.js"}
     %script{:src => "assets/js/skel.min.js"}
     %script{:src => "assets/js/util.js"}
-    /[if lte IE 8] <script src="assets/js/ie/respond.min.js"></script>
-  %script{:src => "assets/js/main.js"}
+    %script{:src => "assets/js/main.js"}
