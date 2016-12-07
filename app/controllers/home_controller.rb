@@ -1,13 +1,14 @@
 class HomeController < ApplicationController
-  helper_method :do_stuff
   
   def signin
+    if UserSession.instance.is_valid
+      redirect_to '/session/dashboard'
+    end
     unless params[:home].nil?
       @username = params[:home][:username]
       @password = params[:home][:password]
-
       user = User.where(:username => @username).first
-
+      UserSession.instance.set_user(user)
       if user && user.password == @password
         redirect_to '/session/dashboard'
       else
@@ -32,9 +33,14 @@ class HomeController < ApplicationController
         @user = User.new
         @user.username = @username
         @user.password = @password
-        # other attributes?
-        # go to new link afterwards
+        @user.save
+        redirect_to '/home/signin'
       end
     end
+  end
+
+  def logout
+    UserSession.instance.invalidate_user
+    redirect_to '/home/signin'
   end
 end

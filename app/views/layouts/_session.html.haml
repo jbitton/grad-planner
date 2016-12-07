@@ -8,15 +8,12 @@
     %title When do I Graduate?
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = javascript_include_tag '//www.google.com/jsapi', 'chartkick'
     = csrf_meta_tags
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:charset => "utf-8"}/
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
-    /[if lte IE 8] <script src="assets/js/ie/html5shiv.js"></script>
-  %link{:href => "assets/css/main.css", :rel => "stylesheet"}/
-  /[if lte IE 9] <link rel="stylesheet" href="assets/css/ie9.css" />
-/[if lte IE 8] <link rel="stylesheet" href="assets/css/ie8.css" />
-%script{:src => "https://cdn.plot.ly/plotly-latest.min.js"}
+
   :javascript
       (function(d) {
         var config = {
@@ -47,6 +44,8 @@
                 %a.active{:href => "#"} Settings
               - else
                 %a{:href => "/session/settings"} Settings
+            %li
+              %a{:href => "/home/logout"} Logout
     / Wrapper
     #wrapper
       / Main
@@ -61,10 +60,3 @@
           %li
             Design:
             %a{:href => "http://html5up.net"} HTML5 UP
-    / Scripts
-    %script{:src => "assets/js/jquery.min.js"}
-    %script{:src => "assets/js/jquery.scrollex.min.js"}
-    %script{:src => "assets/js/jquery.scrolly.min.js"}
-    %script{:src => "assets/js/skel.min.js"}
-    %script{:src => "assets/js/util.js"}
-    %script{:src => "assets/js/main.js"}

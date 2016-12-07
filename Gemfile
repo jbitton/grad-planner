@@ -30,6 +30,8 @@ gem 'haml-rails', '>= 0.3.4', :group => :development
 gem 'font-awesome-rails'
 # gem for scss mixin breakpoint
 gem 'breakpoint'
+# gem for charts
+gem 'chartkick'
 
 
 # Use ActiveModel has_secure_password
