@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   post '/',   to: 'home#signin'
   get 'home/signup'
   post 'home/signup', to: 'home#signup'
+  get 'session/dashboard'
+  get 'session/settings'
+  get 'session/generate'
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
