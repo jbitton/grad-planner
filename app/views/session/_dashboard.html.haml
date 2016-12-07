@@ -1,3 +1,5 @@
+- @current_credits = UserSession.instance.get_user.credits_taken
+- @credits_left = Major.find(UserSession.instance.get_user.major_1).credits.to_i - @current_credits
 %br/
 %br/
 %br/
@@ -5,36 +7,7 @@
   %h1#home-lp-title Welcome to your dashboard!
 %section
   %center
-    #myDiv{:style => "width: 600px; height: 300px;"}
-  :javascript
-    var trace1 = {
-         x: [20], //READ IN VALUE FROM DB HERE-------------------------------------------
-         y: ['Your Progress'],
-         name: 'Completed',
-         orientation: 'h',
-         marker: {
-             color: 'rgba(0, 0, 255, 0.3)',
-             width: 1
-         },
-         type: 'bar'
-      };
-    var trace2 = {
-        x: [29], //TOTAL NEEDED TO GRADUATE - VAL READ FROM DB---------------------------
-        y: ['Your Progress'],
-        name: 'Left to Graduation',
-        orientation: 'h',
-        type: 'bar',
-        marker: {
-            color: 'rgba(255, 0, 0, 0.3)',
-            width: 1
-          }
-    };
-      var data = [trace1, trace2];
-    var layout = {
-        title: 'Your Credits',
-        barmode: 'stack'
-    };
-    Plotly.newPlot('myDiv', data, layout);
+    = pie_chart ({"Current Credits" => @current_credits, "Credits Left" => @credits_left}), donut: true
   %br/
   / Graph to monitor student's progress goes here
   %p This is your schedule planner. In the taskbar, you have the option of letting the application generate a schedule for you, or to view your drafts you have saved. You have a maximum of 5 drafts allowed to be saved in your profile. Team 1023MB hopes you enjoy the experience!

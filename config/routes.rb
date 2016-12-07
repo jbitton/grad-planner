@@ -2,11 +2,13 @@ Rails.application.routes.draw do
   get  'home/signin'
   root 'home#signin'
   post '/',   to: 'home#signin'
+  post '/home/signin', to: 'home#signin'
   get 'home/signup'
   post 'home/signup', to: 'home#signup'
   get 'session/dashboard'
   get 'session/settings'
   get 'session/generate'
+  get 'home/logout'
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
