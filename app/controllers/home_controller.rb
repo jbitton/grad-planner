@@ -9,7 +9,7 @@ class HomeController < ApplicationController
       user = User.where(:username => @username).first
 
       if user && user.password == @password
-        redirect_to '/session/dashboard'
+        redirect_to '/login'
       else
         render partial: 'login', layout: '/layouts/home', locals: { invalid: true }
       end
