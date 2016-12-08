@@ -4,11 +4,42 @@
 %br/
 %br/
 %center
-  %h1#home-lp-title Welcome to your dashboard!
+  %h1#home-lp-title
+    Welcome to your dashboard,
+    - if UserSession.instance.get_user.first_name.nil?
+      = UserSession.instance.get_user.username
+    - else
+      = UserSession.instance.get_user.first_name
+  %p This is your schedule planner. In the taskbar, you have the option of letting the application generate a schedule for you, or to view your drafts you have saved. You have a maximum of 5 drafts allowed to be saved in your profile. Team 1023MB hopes you enjoy the experience!
+
 %section
+  / Graph to monitor student's progress goes here:
   %center
     = pie_chart ({"Current Credits" => @current_credits, "Credits Left" => @credits_left}), donut: true
-  %br/
-  / Graph to monitor student's progress goes here
-  %p This is your schedule planner. In the taskbar, you have the option of letting the application generate a schedule for you, or to view your drafts you have saved. You have a maximum of 5 drafts allowed to be saved in your profile. Team 1023MB hopes you enjoy the experience!
-  %p For the application to work, our team developed an algorithm that will pick your schedule for you based on what classes you need to take. Once a sample schedule is generated, drag and drop can be utilized to move other courses in the schedule so that you may save it as a draft, if you choose to not go directly with the schedule we have provided.
+    - unless courses.nil?
+      - logger.info courses
+      / Courses they've taken
+      %section
+        %br
+        %h2 Courses you've taken so far:
+        .table-wrapper
+          %table
+            %thead
+              %tr
+                %th Course #
+                %th Class Name
+                %th Description
+            %tbody
+              - courses.each do |course|
+                %tr
+                  %td
+                    = course.course_code
+                  %td
+                    = course.name
+                  %td
+                    = course.description
+            %tfoot
+              %tr
+                %td{:colspan => "3"}
+
+

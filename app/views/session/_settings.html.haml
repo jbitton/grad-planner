@@ -1,3 +1,4 @@
+- @courses = Course.all
 %br/
 %p
   Fill out the following information to complete your profile.
@@ -12,18 +13,6 @@
         %form{:action => "/session/settings",:method => "post"}
           .container
             %label
-              %b Unique Username:
-            %input{:name => "uname", :placeholder => "You will use this to log in...", :required => "", :type => "text"}/
-            %br/
-            %label
-              %b Password:
-            %input{:name => "psw", :placeholder => "Enter your password", :required => "", :type => "text"}/
-            %br/
-            %label
-              %b Confirm your Password:
-            %input{:name => "psw", :placeholder => "Enter your password again", :required => "", :type => "text"}/
-            %br/
-            %label
               %b First Name:
             %input{:name => "fname", :placeholder => "Enter your first name", :required => "", :type => "text"}/
             %br/
@@ -32,15 +21,19 @@
             %input{:name => "lname", :placeholder => "Enter your last name", :required => "", :type => "text"}/
             %br/
             %label
+              %b Total Amount of Credits Taken:
+            %input{:name => "ncredits", :placeholder => "Enter the number of credits", :required => "", :type => "text"}/
+            %br/
+            %label
             %b What is your major?
             .4u{:class => "12u$(small)"}
-              %input#demo-priority-low1{:checked => "checked", :name => "major", :type => "radio", :value => "cs"}/
+              %input#demo-priority-low1{:checked => "checked", :name => "major", :type => "radio", :value => "1"}/
               %label{:for => "demo-priority-low1"} Computer Science
             .4u{:class => "12u$(small)"}
-              %input#demo-priority-normal1{:name => "major", :type => "radio", :value => "ce"}/
+              %input#demo-priority-normal1{:name => "major", :type => "radio", :value => "2"}/
               %label{:for => "demo-priority-normal1"} Computer Engineering
             .4u{:class => "12u$(small)"}
-              %input#demo-priority-high1{:name => "major", :type => "radio", :value => "ee"}/
+              %input#demo-priority-high1{:name => "major", :type => "radio", :value => "3"}/
               %label{:for => "demo-priority-high1"} Electrical Engineering
             %br/
             %label
@@ -58,10 +51,11 @@
               Please enter all the courses you have received credit for,
               %b including the semester you are currently enrolled for.
               Do not leave out any courses, as any lapses in your schedule will drastically affect the accuracy of your schedule generation!
-            .dropdown
-              %button2.dropbtn{:onclick => "myFunction()"} Select Your Courses
+            #select{:style => 'height: 20em; overflow: auto;'}
+              - @courses.each do |course|
+                %input{:id => "#{course.course_code}", :name => 'taken[]', :type => 'checkbox', :value => "#{course.course_code}"}
+                %label{:for => "#{course.course_code}"} #{course.name}
+                %br
             %br/
             %br/
             %button{:type => "submit"} Submit my info!
-            %input#demo-human{:checked => "checked", :name => "demo-human", :type => "checkbox"}/
-            %label{:for => "demo-human"} Not a robot
