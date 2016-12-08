@@ -4,7 +4,12 @@
 %br/
 %br/
 %center
-  %h1#home-lp-title Welcome to your dashboard!
+  %h1#home-lp-title
+    Welcome to your dashboard,
+    - if UserSession.instance.get_user.first_name.nil?
+      = UserSession.instance.get_user.username
+    - else
+      = UserSession.instance.get_user.first_name
 %section
   %center
     = pie_chart ({"Current Credits" => @current_credits, "Credits Left" => @credits_left}), donut: true

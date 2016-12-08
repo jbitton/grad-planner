@@ -3,17 +3,21 @@
 %h1.major Generate a Schedule Here!
 / Text
 %section
-  %p Your major is:
-  / FILL IN FROM DATABASE
+  %h3
+    Welcome,
+    = UserSession.instance.get_user.first_name
   %p
-    How many credits are you taking,
-    %strong including this semester?
+    Your major is:
+    = Major.find(UserSession.instance.get_user.major_1).name
+  %p
+    How many credits do you want to take,
+    %strong next semester?
   .6u{:class => "12u$(xsmall)"}
-    %input#demo-name{:name => "demo-name", :placeholder => "Enter your credits taken", :type => "text", :value => ""}/
+    %input#demo-name{:name => "demo-name", :placeholder => "Number of credits", :type => "text", :value => ""}/
   %br/
   %p Would you like more core or elective courses?
   .4u{:class => "12u$(small)"}
-    %input#demo-priority-low{:checked => "checked", :name => "classtype", :type => "radio", :value => "core"}/
+    %input#demo-priority-low{:name => "classtype", :type => "radio", :value => "core"}/
     %label{:for => "demo-priority-low"} Core Classes
   .4u{:class => "12u$(small)"}
     %input#demo-priority-normal{:name => "classtype", :type => "radio", :value => "elective"}/
@@ -22,41 +26,23 @@
   %br/
   %a.button.fit{:href => "#"} GENERATE!
   %hr/
-/ Lists
-%section
-/ Table
-%section
-  %h2 Table
-  %h3 Default
-  .table-wrapper
-    %table
-      %thead
-        %tr
-          %th Name
-          %th Description
-          %th Price
-      %tbody
-        %tr
-          %td Item One
-          %td Ante turpis integer aliquet porttitor.
-          %td 29.99
-        %tr
-          %td Item Two
-          %td Vis ac commodo adipiscing arcu aliquet.
-          %td 19.99
-        %tr
-          %td Item Three
-          %td Morbi faucibus arcu accumsan lorem.
-          %td 29.99
-        %tr
-          %td Item Four
-          %td Vitae integer tempus condimentum.
-          %td 19.99
-        %tr
-          %td Item Five
-          %td Ante turpis integer aliquet porttitor.
-          %td 29.99
-      %tfoot
-        %tr
-          %td{:colspan => "2"}
-          %td 100.00
+- unless potential.nil?
+  / Table of Suggestions
+  %section
+    %h2 Classes you can take next semester:
+    .table-wrapper
+      %table
+        %thead
+          %tr
+            %th Class Name
+            %th Description
+        %tbody
+          - potential.each do |course|
+            %tr
+              %td
+                = course.name
+              %td
+                = course.description
+        %tfoot
+          %tr
+            %td{:colspan => "2"}
