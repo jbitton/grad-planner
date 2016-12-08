@@ -57,5 +57,8 @@
                 %label{:for => "#{course.course_code}"} #{course.name}
                 %br
             %br/
+            - if invalid
+              %p{:style => 'color: red;'}
+                Please make sure to enter all fields before you submit
             %br/
             %button{:type => "submit"} Submit my info!

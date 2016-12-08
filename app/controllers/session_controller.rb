@@ -62,6 +62,10 @@ class SessionController < ApplicationController
     end
 
     unless params[:fname].nil?
+      unless params[:lname] && params[:major] && params[:ncredits] && params[:math] && params[:taken]
+        render partial: 'settings', layout: '/layouts/session', locals: { active: 'settings', invalid: true }
+        return
+      end
       UserSession.instance.get_user.update_attribute(:first_name, params[:fname])
       UserSession.instance.get_user.update_attribute(:last_name, params[:lname])
       UserSession.instance.get_user.update_attribute(:major_1, params[:major].to_i)
