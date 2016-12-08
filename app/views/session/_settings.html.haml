@@ -9,7 +9,7 @@
   %section
     .content
       .inner
-        %form{:action => ""}
+        %form{:action => "/session/settings",:method => "post"}
           .container
             %label
               %b Unique Username:
@@ -29,7 +29,7 @@
             %br/
             %label
               %b Last Name:
-            %input{:name => "lname", :placeholder => "Enter your last name", :required => "", :type => "password"}/
+            %input{:name => "lname", :placeholder => "Enter your last name", :required => "", :type => "text"}/
             %br/
             %label
             %b What is your major?
