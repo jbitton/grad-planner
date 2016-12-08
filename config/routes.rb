@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post 'home/signup', to: 'home#signup'
   get 'session/dashboard'
   get 'session/settings'
+  post 'session/settings', to: 'session#settings'
   get 'session/generate'
   get 'home/logout'
   resources :users
