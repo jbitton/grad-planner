@@ -17,6 +17,7 @@
   %center
     = pie_chart ({"Current Credits" => @current_credits, "Credits Left" => @credits_left}), donut: true
     - unless courses.nil?
+      - logger.info courses
       / Courses they've taken
       %section
         %br

@@ -9,7 +9,9 @@ class SessionController < ApplicationController
     courses = []
 
     classes_taken.each do |course|
-      courses.push(Course.where(:course_code => course).first)
+      unless course == 'MAC1105' || course == 'MAC1140'
+        courses.push(Course.where(:course_code => course).first)
+      end
     end
 
     render partial: 'dashboard', layout: '/layouts/session', locals: { active: 'dashboard', courses: courses }
@@ -57,6 +59,24 @@ class SessionController < ApplicationController
     unless UserSession.instance.is_valid
       redirect_to '/home/signin'
       return
+    end
+
+    unless params[:fname].nil?
+      UserSession.instance.get_user.update_attribute(:first_name, params[:fname])
+      UserSession.instance.get_user.update_attribute(:last_name, params[:lname])
+      UserSession.instance.get_user.update_attribute(:major_1, params[:major].to_i)
+      UserSession.instance.get_user.update_attribute(:credits_taken, params[:ncredits].to_i)
+      courses_taken = []
+      if params[:math] == 'mac1140' || params[:math] == 'mac2311'
+        courses_taken.push('MAC1105')
+        courses_taken.push('MAC1140')
+      end
+
+      params[:taken].each do |course|
+        courses_taken.push(course)
+      end
+
+      UserSession.instance.get_user.update_attribute(:courses_taken, courses_taken.join(','))
     end
   end
 end
