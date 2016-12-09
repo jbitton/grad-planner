@@ -40,6 +40,11 @@
               - else
                 = link_to 'Generate!', '/session/generate', method: :get
             %li
+              - if active == 'profile'
+                = link_to 'Profile', '#', method: :get, class: 'active'
+              - else
+                = link_to 'Profile', '/session/profile', method: :get
+            %li
               - if active == 'settings'
                 = link_to 'Settings', '#', method: :get, class: 'active'
               - else
@@ -53,7 +58,7 @@
         .inner
           = yield
     / Footer
-    %footer#footer.wrapper.alt
+    %footer#footer.wrapper
       .inner
         %ul.menu
           %li © 1023MB. All rights reserved.

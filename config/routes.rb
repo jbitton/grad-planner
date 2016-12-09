@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'home/signup'
   post 'home/signup', to: 'home#signup'
   get 'session/dashboard'
+  get 'session/profile'
+  post 'session/profile', to: 'session#profile'
   get 'session/settings'
   post 'session/settings', to: 'session#settings'
   get 'session/generate'
