@@ -20,3 +20,8 @@
 /.idea/*
 
 /db/migrate/
+
+Gemfile.lock
+
+/config/database.yml
+/config/application.yml
