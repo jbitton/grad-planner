@@ -49,8 +49,8 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 
-#production:
-#  <<: *default
-#  database: swe_project
-#  username: morenoCami
-#  password: <%= ENV['TESTING_DATABASE_PASSWORD'] %>
+production:
+  <<: *default
+  database: grad_planner
+  username: morenoCami
+  password: spicyboi
