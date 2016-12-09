@@ -31,21 +31,21 @@
           %ul
             %li
               - if active == 'dashboard'
-                %a.active{:href => "#"} Dashboard
+                = link_to 'Dashboard', '#', method: :get, class: 'active'
               - else
-                %a{:href => "/session/dashboard"} Dashboard
+                = link_to 'Dashboard', '/session/dashboard', method: :get
             %li
               - if active == 'generate'
-                %a.active{:href => "#"} Generate
+                = link_to 'Generate!', '#', method: :get, class: 'active'
               - else
-                %a{:href => "/session/generate"} Generate
+                = link_to 'Generate!', '/session/generate', method: :get
             %li
               - if active == 'settings'
-                %a.active{:href => "#"} Settings
+                = link_to 'Settings', '#', method: :get, class: 'active'
               - else
-                %a{:href => "/session/settings"} Settings
+                = link_to 'Settings', '/session/settings', method: :get
             %li
-              %a{:href => "/home/logout"} Logout
+              = link_to 'Logout', '/session/logout', method: :get
     / Wrapper
     #wrapper
       / Main
