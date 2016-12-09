@@ -3,51 +3,33 @@
 %h1.major Generate a Schedule Here!
 / Text
 %section
-  %h2
-    Welcome,
-    = UserSession.instance.get_user.first_name
-  %p
-    Your major is:
-    %strong
-      = Major.find(UserSession.instance.get_user.major_1).name
-    %form{:action => '', :method => 'post'}
-      %p
-        How many credits do you want to take,
-        %strong next semester?
-        .6u{:class => "12u$(xsmall)"}
-          %input#demo-name{:name => "demo-name", :placeholder => "Enter your credits taken", :type => "text", :value => ""}/
-        %br/
-        %p Would you like more core or elective courses?
-        .4u{:class => "12u$(small)"}
-          %input#demo-priority-low{:name => "classtype", :type => "radio", :value => "core"}/
-          %label{:for => "demo-priority-low"} Core Classes
-        .4u{:class => "12u$(small)"}
-          %input#demo-priority-normal{:name => "classtype", :type => "radio", :value => "elective"}/
-          %label{:for => "demo-priority-normal"} Elective Classes
-        %br/
-        %br/
-        %a.button.fit{:href => "#"} GENERATE!
-  %hr/
-- unless potential.nil?
-  / Table of Suggestions
-  %section
-    %h2 Classes you can take next semester:
-    .table-wrapper
-      %table
-        %thead
-          %tr
-            %th Course #
-            %th Class Name
-            %th Description
-        %tbody
-          - potential.each do |course|
-            %tr
-              %td
-                = course.course_code
-              %td
-                = course.name
-              %td
-                = course.description
-        %tfoot
-          %tr
-            %td{:colspan => "2"}
+  - if UserSession.instance.get_user.first_name == ''
+    %h2 Please fill out the settings information to generate a schedule
+    %br
+    %br
+  - else
+    %h2
+      Welcome,
+      = UserSession.instance.get_user.first_name
+    %p
+      Your major is:
+      %strong
+        = Major.find(UserSession.instance.get_user.major_1).name
+      %form{:action => "/session/generate",:method => "post"}
+        %p
+          How many class do you want to take,
+          %strong next semester?
+          .6u{:class => "12u$(xsmall)"}
+            %input#demo-name{:name => "demo-name", :placeholder => "Enter the number of classes you want to take", :type => "text", :value => ""}/
+          %br/
+          %p Would you like more core or elective courses?
+          .4u{:class => "12u$(small)"}
+            %input#demo-priority-low{:name => "classtype", :type => "radio", :value => "core"}/
+            %label{:for => "demo-priority-low"} Core Classes
+          .4u{:class => "12u$(small)"}
+            %input#demo-priority-normal{:name => "classtype", :type => "radio", :value => "elective"}/
+            %label{:for => "demo-priority-normal"} Elective Classes
+          %br/
+          %br/
+          %button.fit{:type => "submit"} GENERATE!
+    %hr/

@@ -1,0 +1,49 @@
+%br/
+%br/
+%h1.major Classes you should take:
+%section
+  / Table of Suggestions
+  %section
+    .table-wrapper
+      %table
+        %thead
+          %tr
+            %th Course #
+            %th Class Name
+            %th Description
+        %tbody
+          - recommended.each do |course|
+            %tr
+              %td
+                = course.course_code
+              %td
+                = course.name
+              %td
+                = course.description
+        %tfoot
+          %tr
+            %td{:colspan => "3"}
+/ Text
+%section
+  / Table of Suggestions
+  %section
+    %h2 Here are all the classes you can take:
+    .table-wrapper
+      %table
+        %thead
+          %tr
+            %th Course #
+            %th Class Name
+            %th Description
+        %tbody
+          - potential.each do |course|
+            %tr
+              %td
+                = course.course_code
+              %td
+                = course.name
+              %td
+                = course.description
+        %tfoot
+          %tr
+            %td{:colspan => "3"}

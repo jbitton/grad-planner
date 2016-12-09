@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'session/settings'
   post 'session/settings', to: 'session#settings'
   get 'session/generate'
+  post 'session/generate', to: 'session#generate'
   get 'home/logout'
   resources :users
 
