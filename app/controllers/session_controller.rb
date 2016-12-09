@@ -113,7 +113,7 @@ class SessionController < ApplicationController
     end
   end
 
-  def settings
+  def profile
     unless UserSession.instance.is_valid
       redirect_to '/home/signin'
       return
@@ -121,7 +121,7 @@ class SessionController < ApplicationController
 
     unless params[:fname].nil?
       unless params[:lname] && params[:major] && params[:ncredits] && params[:math] && params[:taken]
-        render partial: 'settings', layout: '/layouts/session', locals: { active: 'settings', invalid: true }
+        render partial: 'profile', layout: '/layouts/session', locals: { active: 'profile', invalid: true }
         return
       end
       UserSession.instance.get_user.update_attribute(:first_name, params[:fname])
@@ -139,6 +139,29 @@ class SessionController < ApplicationController
       end
 
       UserSession.instance.get_user.update_attribute(:courses_taken, courses_taken.join(','))
+    end
+  end
+
+  def settings
+    unless UserSession.instance.is_valid
+      redirect_to '/home/signin'
+      return
+    end
+
+    unless params[:new_username].nil?
+      if UserSession.instance.get_user.password == params[:password]
+        UserSession.instance.get_user.update_attribute(:username, params[:new_username])
+      else
+        render partial: 'settings', layout: '/layouts/session', locals: { active: 'settings', invalid: true }
+      end
+    end
+
+    unless params[:new_password].nil?
+      if UserSession.instance.get_user.password == params[:old_password]
+        UserSession.instance.get_user.update_attribute(:password, params[:new_password])
+      else
+        render partial: 'settings', layout: '/layouts/session', locals: { active: 'settings', invalid: true }
+      end
     end
   end
 end

@@ -1,72 +1,34 @@
-- @courses = Course.all
-- classes_taken = UserSession.instance.get_user.courses_taken.split(',')
-- @courses_taken = []
-- classes_taken.each do |course|
-  - unless course == 'MAC1105' || course == 'MAC1140'
-    - @courses_taken.push(Course.where(:course_code => course).first)
 %br/
 %p
-  Fill out the following information to complete your profile.
-  %b Note: making this schedule assumes you have completed all IFP courses.
-  We use the math courses as a differentiator because the math courses a student takes determines the courses a student has to take to get into courses like calculus.
-  %strong ALL ITEMS REQUIRED!
+  To change your username or password, fill out the information below:
 / One
 %section.wrapper.style2.spotlights
+  - if invalid
+    %p{:style => 'color: red;'} Incorrect password
   %section
     .content
       .inner
+        %h2 Change your username
         %form{:action => "/session/settings",:method => "post"}
           .container
             %label
-              %b First Name:
-            %input{:name => "fname", :placeholder => "Enter your first name", :required => "", :type => "text"}/
-            %br/
+              %b New Username
+            %input{:name => "new_username", :placeholder => "Enter your old password", :required => "", :type => "text"}/
+            %br
             %label
-              %b Last Name:
-            %input{:name => "lname", :placeholder => "Enter your last name", :required => "", :type => "text"}/
+              %b Password
+            %input{:name => "password", :placeholder => "Enter your new password", :required => "", :type => "password"}/
             %br/
+            %button{:type => "submit"} Submit
+        %h2 Change your password
+        %form{:action => "/session/settings",:method => "post"}
+          .container
             %label
-              %b Total Amount of Credits Taken:
-            %input{:name => "ncredits", :placeholder => "Enter the number of credits", :required => "", :type => "text"}/
-            %br/
+              %b Old Password
+            %input{:name => "old_password", :placeholder => "Enter your old password", :required => "", :type => "password"}/
+            %br
             %label
-            %b What is your major?
-            .4u{:class => "12u$(small)"}
-              %input#demo-priority-low1{:checked => "checked", :name => "major", :type => "radio", :value => "1"}/
-              %label{:for => "demo-priority-low1"} Computer Science
-            .4u{:class => "12u$(small)"}
-              %input#demo-priority-normal1{:name => "major", :type => "radio", :value => "2"}/
-              %label{:for => "demo-priority-normal1"} Computer Engineering
-            .4u{:class => "12u$(small)"}
-              %input#demo-priority-high1{:name => "major", :type => "radio", :value => "3"}/
-              %label{:for => "demo-priority-high1"} Electrical Engineering
+              %b New Password
+            %input{:name => "new_password", :placeholder => "Enter your new password", :required => "", :type => "password"}/
             %br/
-            %label
-            %b What math did you start out with?
-            .4u{:class => "12u$(small)"}
-              %input#demo-priority-low2{:checked => "checked", :name => "math", :type => "radio", :value => "mac1105"}/
-              %label{:for => "demo-priority-low2"} MAC1105: College Algebra
-            .4u{:class => "12u$(small)"}
-              %input#demo-priority-normal2{:name => "math", :type => "radio", :value => "mac1140"}/
-              %label{:for => "demo-priority-normal2"} MAC1140: Precalculus Algebra
-            .4u{:class => "12u$(small)"}
-              %input#demo-priority-high2{:name => "math", :type => "radio", :value => "mac2311"}/
-              %label{:for => "demo-priority-high2"} MAC2311: Calculus with Analytic Geometry 1
-            %p
-              Please enter all the courses you have received credit for,
-              %b including the semester you are currently enrolled for.
-              Do not leave out any courses, as any lapses in your schedule will drastically affect the accuracy of your schedule generation!
-            #select{:style => 'height: 20em; overflow: auto;'}
-              - @courses.each do |course|
-                - if @courses_taken.include?(course)
-                  %input{:checked => 'checked', :id => "#{course.course_code}", :name => 'taken[]', :type => 'checkbox', :value => "#{course.course_code}"}
-                - else
-                  %input{:id => "#{course.course_code}", :name => 'taken[]', :type => 'checkbox', :value => "#{course.course_code}"}
-                %label{:for => "#{course.course_code}"} #{course.name}
-                %br
-            %br/
-            - if invalid
-              %p{:style => 'color: red;'}
-                Please make sure to enter all fields before you submit
-            %br/
-            %button{:type => "submit"} Submit my info!
+            %button{:type => "submit"} Submit
