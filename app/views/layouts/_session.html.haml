@@ -1,0 +1,67 @@
+!!!
+/
+  Hyperspace by HTML5 UP
+  html5up.net | @ajlkn
+  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+%html
+  %head
+    %title When do I Graduate?
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = javascript_include_tag '//www.google.com/jsapi', 'chartkick'
+    = csrf_meta_tags
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+
+  :javascript
+      (function(d) {
+        var config = {
+          kitId: 'gkf0ehc',
+          scriptTimeout: 3000,
+          async: true
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+      })(document);
+  %body
+    / Sidebar
+    %section#sidebar
+      .inner
+        %nav
+          %ul
+            %li
+              - if active == 'dashboard'
+                = link_to 'Dashboard', '#', method: :get, class: 'active'
+              - else
+                = link_to 'Dashboard', '/session/dashboard', method: :get
+            %li
+              - if active == 'generate'
+                = link_to 'Generate!', '#', method: :get, class: 'active'
+              - else
+                = link_to 'Generate!', '/session/generate', method: :get
+            %li
+              - if active == 'profile'
+                = link_to 'Profile', '#', method: :get, class: 'active'
+              - else
+                = link_to 'Profile', '/session/profile', method: :get
+            %li
+              - if active == 'settings'
+                = link_to 'Settings', '#', method: :get, class: 'active'
+              - else
+                = link_to 'Settings', '/session/settings', method: :get
+            %li
+              = link_to 'Logout', '/home/logout', method: :get
+    / Wrapper
+    #wrapper
+      / Main
+      %section#main.wrapper
+        .inner
+          = yield
+    / Footer
+    %footer#footer.wrapper
+      .inner
+        %ul.menu
+          %li © 1023MB. All rights reserved.
+          %li
+            Design:
+            %a{:href => "http://html5up.net"} HTML5 UP

@@ -1,0 +1,60 @@
+- @current_credits = UserSession.instance.get_user.credits_taken
+- @major_credits =Major.find(UserSession.instance.get_user.major_1).credits
+- @credits_left = @major_credits.to_i - @current_credits
+%br/
+%br/
+%br/
+%center
+  %h1#home-lp-title
+    Welcome to your dashboard,
+    - if UserSession.instance.get_user.first_name == ''
+      = UserSession.instance.get_user.username
+    - else
+      = UserSession.instance.get_user.first_name
+  %p
+    - unless UserSession.instance.get_user.major_1 == 0
+      BS-
+      = Major.find(UserSession.instance.get_user.major_1).name
+      &emsp;
+    College of Engineering
+    &emsp;
+    Catalog Year: 2016-2017
+    &emsp;
+    = Date.current.to_formatted_s(:long_ordinal)
+
+%section
+  / Graph to monitor student's progress goes here:
+  %center
+    - if UserSession.instance.get_user.first_name != '' && @current_credits <= 120
+      = pie_chart ({"Current Credits" => @current_credits, "Credits Left" => @credits_left}), donut: true
+    - elsif @credits_left < 0
+      = pie_chart ({"Current Credits" => @major_credits, "Credits Left" => 0}), donut: true
+    - else
+      %h2 Fill in your data in the Settings page to populate this page
+    - unless courses.nil?
+      - logger.info courses
+      / Courses they've taken
+      %section
+        %br
+        %h2 Courses you've taken so far:
+        .table-wrapper
+          %table
+            %thead
+              %tr
+                %th Course #
+                %th Class Name
+                %th Description
+            %tbody
+              - courses.each do |course|
+                %tr
+                  %td
+                    = course.course_code
+                  %td
+                    = course.name
+                  %td
+                    = course.description
+            %tfoot
+              %tr
+                %td{:colspan => "3"}
+
+

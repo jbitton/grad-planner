@@ -3217,17 +3217,22 @@
 	}
 
 		.wrapper > .inner {
-			padding: 0em 0em 3em 5em ;
+            margin-left: 23%;
+            padding: 0 5% 0 7%;
 			max-width: 100%;
-			width: 75em;
+			width: 75%;
 		}
+
+        #one {
+            padding-left: 23%;
+        }
 
 			@media screen and (max-width: 1680px) {
 
 				.wrapper > .inner {
-					padding: 0em 0em 2em 22em ;
+                    padding: 0% 5% 0% 7% ;
 				}
-                .wrapper > * { padding-left: 22em; }
+                .wrapper > * { padding-left: 0; }
 
 			}
 
@@ -3498,7 +3503,7 @@
 		margin: 0 auto;
 	}
 
-	.copyright, .copyright * { text-align: center; padding-left: 22em; }
+	.copyright, .copyright * { text-align: center; }
 
 /* Footer */
 
@@ -3909,9 +3914,8 @@
 	}
 
 	#intro #home-lp-content {
-		margin-top: 48vh;
-		margin-bottom: 4vh;
-		font-size: 1.5em;
+		margin-top: 28vh;
+		font-size: 1.35em;
 	}
 
 		#intro p {

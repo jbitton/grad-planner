@@ -1,7 +1,19 @@
 Rails.application.routes.draw do
-  get 'home/index'
-
-  root 'home#index'
+  get  'home/signin'
+  root 'home#signin'
+  post '/',   to: 'home#signin'
+  post '/home/signin', to: 'home#signin'
+  get 'home/signup'
+  post 'home/signup', to: 'home#signup'
+  get 'session/dashboard'
+  get 'session/profile'
+  post 'session/profile', to: 'session#profile'
+  get 'session/settings'
+  post 'session/settings', to: 'session#settings'
+  get 'session/generate'
+  post 'session/generate', to: 'session#generate'
+  get 'home/logout'
+  resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

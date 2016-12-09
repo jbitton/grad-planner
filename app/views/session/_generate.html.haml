@@ -1,0 +1,35 @@
+%br/
+%br/
+%h1.major Generate a Schedule Here!
+/ Text
+%section
+  - if UserSession.instance.get_user.first_name == ''
+    %h2 Please fill out the settings information to generate a schedule
+    %br
+    %br
+  - else
+    %h2
+      Welcome,
+      = UserSession.instance.get_user.first_name
+    %p
+      Your major is:
+      %strong
+        = Major.find(UserSession.instance.get_user.major_1).name
+      %form{:action => "/session/generate",:method => "post"}
+        %p
+          How many class do you want to take,
+          %strong next semester?
+          .6u{:class => "12u$(xsmall)"}
+            %input#demo-name{:name => "demo-name", :placeholder => "Enter the number of classes you want to take", :type => "text", :value => ""}/
+          %br/
+          %p Would you like more core or elective courses?
+          .4u{:class => "12u$(small)"}
+            %input#demo-priority-low{:name => "classtype", :type => "radio", :value => "core"}/
+            %label{:for => "demo-priority-low"} Core Classes
+          .4u{:class => "12u$(small)"}
+            %input#demo-priority-normal{:name => "classtype", :type => "radio", :value => "elective"}/
+            %label{:for => "demo-priority-normal"} Elective Classes
+          %br/
+          %br/
+          %button.fit{:type => "submit"} GENERATE!
+    %hr/

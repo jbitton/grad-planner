@@ -1,0 +1,17 @@
+%h2 Please enter a new Username and Password to set up your account
+= form_for(:home, url: '') do |f|
+  = f.label :username
+  = f.text_field :username, class: 'form-control'
+  %br
+  = f.label :password
+  = f.password_field :password, class: 'form-control'
+  %br
+  = f.label :confirm_password
+  = f.password_field :confirm_password, class: 'form-control'
+  - if invalid
+    %p{:style => 'color: red;'}
+      = invalid
+  - else
+    %br
+  = f.submit "Sign Up"
+  = link_to 'Login in Now!', '/home/signin', method: :get

@@ -1,0 +1,34 @@
+%br/
+%p
+  To change your username or password, fill out the information below:
+/ One
+%section.wrapper.style2.spotlights
+  - if invalid
+    %p{:style => 'color: red;'} Incorrect password
+  %section
+    .content
+      .inner
+        %h2 Change your username
+        %form{:action => "/session/settings",:method => "post"}
+          .container
+            %label
+              %b New Username
+            %input{:name => "new_username", :placeholder => "Enter your old password", :required => "", :type => "text"}/
+            %br
+            %label
+              %b Password
+            %input{:name => "password", :placeholder => "Enter your new password", :required => "", :type => "password"}/
+            %br/
+            %button{:type => "submit"} Submit
+        %h2 Change your password
+        %form{:action => "/session/settings",:method => "post"}
+          .container
+            %label
+              %b Old Password
+            %input{:name => "old_password", :placeholder => "Enter your old password", :required => "", :type => "password"}/
+            %br
+            %label
+              %b New Password
+            %input{:name => "new_password", :placeholder => "Enter your new password", :required => "", :type => "password"}/
+            %br/
+            %button{:type => "submit"} Submit
