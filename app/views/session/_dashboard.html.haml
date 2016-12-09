@@ -7,16 +7,25 @@
 %center
   %h1#home-lp-title
     Welcome to your dashboard,
-    - if UserSession.instance.get_user.first_name.nil?
+    - if UserSession.instance.get_user.first_name == ''
       = UserSession.instance.get_user.username
     - else
       = UserSession.instance.get_user.first_name
-  %p This is your schedule planner. In the taskbar, you have the option of letting the application generate a schedule for you, or to view your drafts you have saved. You have a maximum of 5 drafts allowed to be saved in your profile. Team 1023MB hopes you enjoy the experience!
+  %p
+    - unless UserSession.instance.get_user.major_1 == 0
+      BS-
+      = Major.find(UserSession.instance.get_user.major_1).name
+      &emsp;
+    College of Engineering
+    &emsp;
+    Catalog Year: 2016-2017
+    &emsp;
+    = Date.current.to_formatted_s(:long_ordinal)
 
 %section
   / Graph to monitor student's progress goes here:
   %center
-    - if Major.find(UserSession.instance.get_user.major_1).credits.to_i >= 120
+    - if UserSession.instance.get_user.first_name != '' && @current_credits <= 120
       = pie_chart ({"Current Credits" => @current_credits, "Credits Left" => @credits_left}), donut: true
     - elsif @credits_left < 0
       = pie_chart ({"Current Credits" => @major_credits, "Credits Left" => 0}), donut: true

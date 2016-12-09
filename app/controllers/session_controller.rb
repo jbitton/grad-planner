@@ -70,10 +70,11 @@ class SessionController < ApplicationController
 
       i = 0
       recommended = potential_classes.dup
+
       unless recommended.count <= num_classes.to_i
         major = UserSession.instance.get_user.major_1
         if core_or_elective == 'core'
-          while recommended.count >= num_classes.to_i && i < recommended.count
+          while recommended.count > num_classes.to_i && i < recommended.count
             if recommended[i].nil?
               recommended.delete_at(i)
             else
@@ -84,7 +85,7 @@ class SessionController < ApplicationController
             i = i + 1
           end
         elsif core_or_elective == 'elective'
-          while recommended.count >= num_classes.to_i && i < recommended.count
+          while recommended.count > num_classes.to_i && i < recommended.count
             if recommended[i].nil?
               recommended.delete_at(i)
             else
@@ -100,11 +101,9 @@ class SessionController < ApplicationController
           recommended.sort_by { |rec| rec.core_for_majors.size }
 
           i = recommended.count - 1
-          counter = recommended.count - num_classes.to_i
-          while counter > 0
+          until i == num_classes.to_i - 1
             recommended.delete_at(i)
             i = i - 1
-            counter = counter - 1
           end
         end
       end

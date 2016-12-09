@@ -1,4 +1,9 @@
 - @courses = Course.all
+- classes_taken = UserSession.instance.get_user.courses_taken.split(',')
+- @courses_taken = []
+- classes_taken.each do |course|
+  - unless course == 'MAC1105' || course == 'MAC1140'
+    - @courses_taken.push(Course.where(:course_code => course).first)
 %br/
 %p
   Fill out the following information to complete your profile.
@@ -53,7 +58,10 @@
               Do not leave out any courses, as any lapses in your schedule will drastically affect the accuracy of your schedule generation!
             #select{:style => 'height: 20em; overflow: auto;'}
               - @courses.each do |course|
-                %input{:id => "#{course.course_code}", :name => 'taken[]', :type => 'checkbox', :value => "#{course.course_code}"}
+                - if @courses_taken.include?(course)
+                  %input{:checked => 'checked', :id => "#{course.course_code}", :name => 'taken[]', :type => 'checkbox', :value => "#{course.course_code}"}
+                - else
+                  %input{:id => "#{course.course_code}", :name => 'taken[]', :type => 'checkbox', :value => "#{course.course_code}"}
                 %label{:for => "#{course.course_code}"} #{course.name}
                 %br
             %br/
