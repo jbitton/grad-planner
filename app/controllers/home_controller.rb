@@ -33,6 +33,11 @@ class HomeController < ApplicationController
         @user = User.new
         @user.username = @username
         @user.password = @password
+        @user.first_name = ''
+        @user.last_name = ''
+        @user.major_1 = 0
+        @user.credits_taken = 0
+        @user.courses_taken = ''
         @user.save
         redirect_to '/home/signin'
       end
