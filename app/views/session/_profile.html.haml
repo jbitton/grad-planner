@@ -19,11 +19,17 @@
           .container
             %label
               %b First Name:
-            %input{:name => "fname", :placeholder => "Enter your first name", :required => "", :type => "text"}/
+            - if UserSession.instance.get_user.first_name == ''
+              %input{:name => "fname", :placeholder => "Enter your first name", :required => "", :type => "text"}/
+            - else
+              %input{:name => "fname", :required => "", :type => "text", :value => "#{UserSession.instance.get_user.first_name}"}/
             %br/
             %label
               %b Last Name:
-            %input{:name => "lname", :placeholder => "Enter your last name", :required => "", :type => "text"}/
+            - if UserSession.instance.get_user.last_name == ''
+              %input{:name => "lname", :placeholder => "Enter your last name", :required => "", :type => "text"}/
+            - else
+              %input{:name => "lname", :required => "", :type => "text", :value => "#{UserSession.instance.get_user.last_name}"}/
             %br/
             %label
               %b Total Amount of Credits Taken:
