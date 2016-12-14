@@ -1,15 +1,16 @@
 class HomeController < ApplicationController
   
   def signin
-    if UserSession.instance.is_valid
+    if session[:current_user_id]
       redirect_to '/session/dashboard'
     end
     unless params[:home].nil?
       @username = params[:home][:username]
       @password = params[:home][:password]
       user = User.where(:username => @username).first
-      UserSession.instance.set_user(user)
+      # UserSession.instance.set_user(user)
       if user && user.password == @password
+        session[:current_user_id] = user.id
         redirect_to '/session/dashboard'
       else
         render partial: 'login', layout: '/layouts/home', locals: { invalid: true }
@@ -45,7 +46,7 @@ class HomeController < ApplicationController
   end
 
   def logout
-    UserSession.instance.invalidate_user
+    session[:current_user_id] = nil
     redirect_to '/home/signin'
   end
 end
