@@ -1,5 +1,6 @@
 - @courses = Course.all
-- classes_taken = UserSession.instance.get_user.courses_taken.split(',')
+- user = User.find(session[:current_user_id])
+- classes_taken = user.courses_taken.split(',')
 - @courses_taken = []
 - classes_taken.each do |course|
   - unless course == 'MAC1105' || course == 'MAC1140'
@@ -19,17 +20,17 @@
           .container
             %label
               %b First Name:
-            - if UserSession.instance.get_user.first_name == ''
+            - if user.first_name == ''
               %input{:name => "fname", :placeholder => "Enter your first name", :required => "", :type => "text"}/
             - else
-              %input{:name => "fname", :required => "", :type => "text", :value => "#{UserSession.instance.get_user.first_name}"}/
+              %input{:name => "fname", :required => "", :type => "text", :value => "#{user.first_name}"}/
             %br/
             %label
               %b Last Name:
-            - if UserSession.instance.get_user.last_name == ''
+            - if user.last_name == ''
               %input{:name => "lname", :placeholder => "Enter your last name", :required => "", :type => "text"}/
             - else
-              %input{:name => "lname", :required => "", :type => "text", :value => "#{UserSession.instance.get_user.last_name}"}/
+              %input{:name => "lname", :required => "", :type => "text", :value => "#{user.last_name}"}/
             %br/
             %label
               %b Total Amount of Credits Taken:
