@@ -1,20 +1,21 @@
+- user = User.find(session[:current_user_id])
 %br/
 %br/
 %h1.major Generate a Schedule Here!
 / Text
 %section
-  - if UserSession.instance.get_user.first_name == ''
+  - if user.first_name == ''
     %h2 Please fill out the profile information to generate a schedule
     %br
     %br
   - else
     %h2
       Welcome,
-      = UserSession.instance.get_user.first_name
+      = user.first_name
     %p
       Your major is:
       %strong
-        = Major.find(UserSession.instance.get_user.major_1).name
+        = Major.find(user.major_1).name
       %form{:action => "/session/generate",:method => "post"}
         %p
           How many class do you want to take,

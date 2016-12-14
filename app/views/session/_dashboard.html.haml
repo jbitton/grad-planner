@@ -1,5 +1,6 @@
-- @current_credits = UserSession.instance.get_user.credits_taken
-- @major_credits =Major.find(UserSession.instance.get_user.major_1).credits
+- user = User.find(session[:current_user_id])
+- @current_credits = user.credits_taken
+- @major_credits =Major.find(user.major_1).credits
 - @credits_left = @major_credits.to_i - @current_credits
 %br/
 %br/
@@ -7,14 +8,14 @@
 %center
   %h1#home-lp-title
     Welcome to your dashboard,
-    - if UserSession.instance.get_user.first_name == ''
-      = UserSession.instance.get_user.username
+    - if user.first_name == ''
+      = user.username
     - else
-      = UserSession.instance.get_user.first_name
+      = user.first_name
   %p
-    - unless UserSession.instance.get_user.major_1 == 0
+    - unless user.major_1 == 0
       BS-
-      = Major.find(UserSession.instance.get_user.major_1).name
+      = Major.find(user.major_1).name
       &emsp;
     College of Engineering
     &emsp;
@@ -25,7 +26,7 @@
 %section
   / Graph to monitor student's progress goes here:
   %center
-    - if UserSession.instance.get_user.first_name != '' && @current_credits <= 120
+    - if user.first_name != '' && @current_credits <= 120
       = pie_chart ({"Current Credits" => @current_credits, "Credits Left" => @credits_left}), donut: true
     - elsif @credits_left < 0
       = pie_chart ({"Current Credits" => @major_credits, "Credits Left" => 0}), donut: true
