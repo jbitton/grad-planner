@@ -1,4 +1,4 @@
-== README
+== grad_planner
 
 A Graduation Planner. Provide the courses you have already taken & your major and we will output your schedule for your next semester! (Hopefully, this will go live soon)
 
