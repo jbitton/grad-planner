@@ -32,14 +32,14 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer "id",            limit: 4,   null: false
-    t.string  "username",      limit: 45,  null: false
-    t.string  "password",      limit: 45,  null: false
-    t.string  "first_name",    limit: 45,  null: false
-    t.string  "last_name",     limit: 45,  null: false
+    t.integer "id",             limit: 4,   null: false
+    t.string  "username",       limit: 45,  null: false
+    t.string  "password",       limit: 45,  null: false
+    t.string  "first_name",     limit: 45,  null: false
+    t.string  "last_name",      limit: 45,  null: false
     t.string  "courses_taken",  limit: 500
-    t.integer "major_1",       limit: 4,   null: false
-    t.integer "credits_taken", limit: 4
+    t.integer "major_1",        limit: 4,   null: false
+    t.integer "credits_taken",  limit: 4
   end
 
   add_index "users", ["username"], name: "username_UNIQUE", unique: true, using: :btree
