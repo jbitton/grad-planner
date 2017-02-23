@@ -43,6 +43,5 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   add_index "users", ["username"], name: "username_UNIQUE", unique: true, using: :btree
-
   add_foreign_key "users", "majors", column: "major_1", name: "major_1"
 end
