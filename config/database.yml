@@ -13,9 +13,9 @@ default: &default
   adapter: mysql2
   encoding: utf8
   database: grad_planner
-  username: morenoCami
-  password: spicyboi
-  host: camilo-east.ccvkxerqfwcv.us-east-1.rds.amazonaws.com
+  username: @username
+  password: @password
+  host: @url
   port: 3306
 
 development:
@@ -52,5 +52,5 @@ test:
 production:
   <<: *default
   database: grad_planner
-  username: morenoCami
-  password: spicyboi
+  username: @username
+  password: @password
